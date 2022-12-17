@@ -31,5 +31,8 @@
   },
   "dependencies": {
     "hardhat-shorthand": "^1.0.0"
+  },
+  "scripts": {
+    "deploy": "hardhat deploy"
   }
 }
