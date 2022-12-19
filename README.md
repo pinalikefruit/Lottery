@@ -38,7 +38,7 @@ The users can enter in the lottery with ETH based on a USD fee (using chainlink 
 1. Clone the repo
    ```sh
    git clone https://github.com/pinalikefruit/Lottery
-   cd FundMe
+   cd Lottery
    ```
 2. Install all packages
    ```sh
