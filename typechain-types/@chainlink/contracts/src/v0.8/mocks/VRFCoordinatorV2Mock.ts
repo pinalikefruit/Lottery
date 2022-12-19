@@ -31,21 +31,14 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
   functions: {
     "BASE_FEE()": FunctionFragment;
     "GAS_PRICE_LINK()": FunctionFragment;
-    "MAX_CONSUMERS()": FunctionFragment;
     "acceptSubscriptionOwnerTransfer(uint64)": FunctionFragment;
     "addConsumer(uint64,address)": FunctionFragment;
     "cancelSubscription(uint64,address)": FunctionFragment;
-    "consumerIsAdded(uint64,address)": FunctionFragment;
     "createSubscription()": FunctionFragment;
     "fulfillRandomWords(uint256,address)": FunctionFragment;
-    "fulfillRandomWordsWithOverride(uint256,address,uint256[])": FunctionFragment;
     "fundSubscription(uint64,uint96)": FunctionFragment;
-    "getConfig()": FunctionFragment;
-    "getFallbackWeiPerUnitLink()": FunctionFragment;
-    "getFeeConfig()": FunctionFragment;
     "getRequestConfig()": FunctionFragment;
     "getSubscription(uint64)": FunctionFragment;
-    "pendingRequestExists(uint64)": FunctionFragment;
     "removeConsumer(uint64,address)": FunctionFragment;
     "requestRandomWords(bytes32,uint64,uint16,uint32,uint32)": FunctionFragment;
     "requestSubscriptionOwnerTransfer(uint64,address)": FunctionFragment;
@@ -55,21 +48,14 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
     nameOrSignatureOrTopic:
       | "BASE_FEE"
       | "GAS_PRICE_LINK"
-      | "MAX_CONSUMERS"
       | "acceptSubscriptionOwnerTransfer"
       | "addConsumer"
       | "cancelSubscription"
-      | "consumerIsAdded"
       | "createSubscription"
       | "fulfillRandomWords"
-      | "fulfillRandomWordsWithOverride"
       | "fundSubscription"
-      | "getConfig"
-      | "getFallbackWeiPerUnitLink"
-      | "getFeeConfig"
       | "getRequestConfig"
       | "getSubscription"
-      | "pendingRequestExists"
       | "removeConsumer"
       | "requestRandomWords"
       | "requestSubscriptionOwnerTransfer"
@@ -78,10 +64,6 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "BASE_FEE", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "GAS_PRICE_LINK",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "MAX_CONSUMERS",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -97,10 +79,6 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "consumerIsAdded",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
     functionFragment: "createSubscription",
     values?: undefined
   ): string;
@@ -109,25 +87,8 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "fulfillRandomWordsWithOverride",
-    values: [
-      PromiseOrValue<BigNumberish>,
-      PromiseOrValue<string>,
-      PromiseOrValue<BigNumberish>[]
-    ]
-  ): string;
-  encodeFunctionData(
     functionFragment: "fundSubscription",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(functionFragment: "getConfig", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "getFallbackWeiPerUnitLink",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getFeeConfig",
-    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "getRequestConfig",
@@ -135,10 +96,6 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "getSubscription",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "pendingRequestExists",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
@@ -166,10 +123,6 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "MAX_CONSUMERS",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "acceptSubscriptionOwnerTransfer",
     data: BytesLike
   ): Result;
@@ -182,10 +135,6 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "consumerIsAdded",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "createSubscription",
     data: BytesLike
   ): Result;
@@ -194,20 +143,7 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "fulfillRandomWordsWithOverride",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "fundSubscription",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getConfig", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getFallbackWeiPerUnitLink",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getFeeConfig",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -216,10 +152,6 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "getSubscription",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "pendingRequestExists",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -236,8 +168,6 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
   ): Result;
 
   events: {
-    "ConsumerAdded(uint64,address)": EventFragment;
-    "ConsumerRemoved(uint64,address)": EventFragment;
     "RandomWordsFulfilled(uint256,uint256,uint96,bool)": EventFragment;
     "RandomWordsRequested(bytes32,uint256,uint256,uint64,uint16,uint32,uint32,address)": EventFragment;
     "SubscriptionCanceled(uint64,address,uint256)": EventFragment;
@@ -245,36 +175,12 @@ export interface VRFCoordinatorV2MockInterface extends utils.Interface {
     "SubscriptionFunded(uint64,uint256,uint256)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "ConsumerAdded"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ConsumerRemoved"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "RandomWordsFulfilled"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "RandomWordsRequested"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SubscriptionCanceled"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SubscriptionCreated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SubscriptionFunded"): EventFragment;
 }
-
-export interface ConsumerAddedEventObject {
-  subId: BigNumber;
-  consumer: string;
-}
-export type ConsumerAddedEvent = TypedEvent<
-  [BigNumber, string],
-  ConsumerAddedEventObject
->;
-
-export type ConsumerAddedEventFilter = TypedEventFilter<ConsumerAddedEvent>;
-
-export interface ConsumerRemovedEventObject {
-  subId: BigNumber;
-  consumer: string;
-}
-export type ConsumerRemovedEvent = TypedEvent<
-  [BigNumber, string],
-  ConsumerRemovedEventObject
->;
-
-export type ConsumerRemovedEventFilter = TypedEventFilter<ConsumerRemovedEvent>;
 
 export interface RandomWordsFulfilledEventObject {
   requestId: BigNumber;
@@ -377,8 +283,6 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
 
     GAS_PRICE_LINK(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    MAX_CONSUMERS(overrides?: CallOverrides): Promise<[number]>;
-
     acceptSubscriptionOwnerTransfer(
       _subId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -387,20 +291,14 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
     addConsumer(
       _subId: PromiseOrValue<BigNumberish>,
       _consumer: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: CallOverrides
+    ): Promise<[void]>;
 
     cancelSubscription(
       _subId: PromiseOrValue<BigNumberish>,
       _to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
-
-    consumerIsAdded(
-      _subId: PromiseOrValue<BigNumberish>,
-      _consumer: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
 
     createSubscription(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -412,57 +310,11 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    fulfillRandomWordsWithOverride(
-      _requestId: PromiseOrValue<BigNumberish>,
-      _consumer: PromiseOrValue<string>,
-      _words: PromiseOrValue<BigNumberish>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     fundSubscription(
       _subId: PromiseOrValue<BigNumberish>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
-
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
-      [number, number, number, number] & {
-        minimumRequestConfirmations: number;
-        maxGasLimit: number;
-        stalenessSeconds: number;
-        gasAfterPaymentCalculation: number;
-      }
-    >;
-
-    getFallbackWeiPerUnitLink(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    getFeeConfig(
-      overrides?: CallOverrides
-    ): Promise<
-      [
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number
-      ] & {
-        fulfillmentFlatFeeLinkPPMTier1: number;
-        fulfillmentFlatFeeLinkPPMTier2: number;
-        fulfillmentFlatFeeLinkPPMTier3: number;
-        fulfillmentFlatFeeLinkPPMTier4: number;
-        fulfillmentFlatFeeLinkPPMTier5: number;
-        reqsForTier2: number;
-        reqsForTier3: number;
-        reqsForTier4: number;
-        reqsForTier5: number;
-      }
-    >;
 
     getRequestConfig(
       overrides?: CallOverrides
@@ -480,16 +332,11 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
       }
     >;
 
-    pendingRequestExists(
-      subId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
-
     removeConsumer(
       _subId: PromiseOrValue<BigNumberish>,
       _consumer: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: CallOverrides
+    ): Promise<[void]>;
 
     requestRandomWords(
       _keyHash: PromiseOrValue<BytesLike>,
@@ -511,8 +358,6 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
 
   GAS_PRICE_LINK(overrides?: CallOverrides): Promise<BigNumber>;
 
-  MAX_CONSUMERS(overrides?: CallOverrides): Promise<number>;
-
   acceptSubscriptionOwnerTransfer(
     _subId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
@@ -521,20 +366,14 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
   addConsumer(
     _subId: PromiseOrValue<BigNumberish>,
     _consumer: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: CallOverrides
+  ): Promise<void>;
 
   cancelSubscription(
     _subId: PromiseOrValue<BigNumberish>,
     _to: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
-
-  consumerIsAdded(
-    _subId: PromiseOrValue<BigNumberish>,
-    _consumer: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
 
   createSubscription(
     overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -546,47 +385,11 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  fulfillRandomWordsWithOverride(
-    _requestId: PromiseOrValue<BigNumberish>,
-    _consumer: PromiseOrValue<string>,
-    _words: PromiseOrValue<BigNumberish>[],
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   fundSubscription(
     _subId: PromiseOrValue<BigNumberish>,
     _amount: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
-
-  getConfig(
-    overrides?: CallOverrides
-  ): Promise<
-    [number, number, number, number] & {
-      minimumRequestConfirmations: number;
-      maxGasLimit: number;
-      stalenessSeconds: number;
-      gasAfterPaymentCalculation: number;
-    }
-  >;
-
-  getFallbackWeiPerUnitLink(overrides?: CallOverrides): Promise<BigNumber>;
-
-  getFeeConfig(
-    overrides?: CallOverrides
-  ): Promise<
-    [number, number, number, number, number, number, number, number, number] & {
-      fulfillmentFlatFeeLinkPPMTier1: number;
-      fulfillmentFlatFeeLinkPPMTier2: number;
-      fulfillmentFlatFeeLinkPPMTier3: number;
-      fulfillmentFlatFeeLinkPPMTier4: number;
-      fulfillmentFlatFeeLinkPPMTier5: number;
-      reqsForTier2: number;
-      reqsForTier3: number;
-      reqsForTier4: number;
-      reqsForTier5: number;
-    }
-  >;
 
   getRequestConfig(
     overrides?: CallOverrides
@@ -604,16 +407,11 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
     }
   >;
 
-  pendingRequestExists(
-    subId: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
   removeConsumer(
     _subId: PromiseOrValue<BigNumberish>,
     _consumer: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: CallOverrides
+  ): Promise<void>;
 
   requestRandomWords(
     _keyHash: PromiseOrValue<BytesLike>,
@@ -635,8 +433,6 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
 
     GAS_PRICE_LINK(overrides?: CallOverrides): Promise<BigNumber>;
 
-    MAX_CONSUMERS(overrides?: CallOverrides): Promise<number>;
-
     acceptSubscriptionOwnerTransfer(
       _subId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -654,12 +450,6 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    consumerIsAdded(
-      _subId: PromiseOrValue<BigNumberish>,
-      _consumer: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
     createSubscription(overrides?: CallOverrides): Promise<BigNumber>;
 
     fulfillRandomWords(
@@ -668,57 +458,11 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    fulfillRandomWordsWithOverride(
-      _requestId: PromiseOrValue<BigNumberish>,
-      _consumer: PromiseOrValue<string>,
-      _words: PromiseOrValue<BigNumberish>[],
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     fundSubscription(
       _subId: PromiseOrValue<BigNumberish>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
-
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
-      [number, number, number, number] & {
-        minimumRequestConfirmations: number;
-        maxGasLimit: number;
-        stalenessSeconds: number;
-        gasAfterPaymentCalculation: number;
-      }
-    >;
-
-    getFallbackWeiPerUnitLink(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getFeeConfig(
-      overrides?: CallOverrides
-    ): Promise<
-      [
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number
-      ] & {
-        fulfillmentFlatFeeLinkPPMTier1: number;
-        fulfillmentFlatFeeLinkPPMTier2: number;
-        fulfillmentFlatFeeLinkPPMTier3: number;
-        fulfillmentFlatFeeLinkPPMTier4: number;
-        fulfillmentFlatFeeLinkPPMTier5: number;
-        reqsForTier2: number;
-        reqsForTier3: number;
-        reqsForTier4: number;
-        reqsForTier5: number;
-      }
-    >;
 
     getRequestConfig(
       overrides?: CallOverrides
@@ -735,11 +479,6 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
         consumers: string[];
       }
     >;
-
-    pendingRequestExists(
-      subId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
 
     removeConsumer(
       _subId: PromiseOrValue<BigNumberish>,
@@ -764,24 +503,6 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
   };
 
   filters: {
-    "ConsumerAdded(uint64,address)"(
-      subId?: PromiseOrValue<BigNumberish> | null,
-      consumer?: null
-    ): ConsumerAddedEventFilter;
-    ConsumerAdded(
-      subId?: PromiseOrValue<BigNumberish> | null,
-      consumer?: null
-    ): ConsumerAddedEventFilter;
-
-    "ConsumerRemoved(uint64,address)"(
-      subId?: PromiseOrValue<BigNumberish> | null,
-      consumer?: null
-    ): ConsumerRemovedEventFilter;
-    ConsumerRemoved(
-      subId?: PromiseOrValue<BigNumberish> | null,
-      consumer?: null
-    ): ConsumerRemovedEventFilter;
-
     "RandomWordsFulfilled(uint256,uint256,uint96,bool)"(
       requestId?: PromiseOrValue<BigNumberish> | null,
       outputSeed?: null,
@@ -853,8 +574,6 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
 
     GAS_PRICE_LINK(overrides?: CallOverrides): Promise<BigNumber>;
 
-    MAX_CONSUMERS(overrides?: CallOverrides): Promise<BigNumber>;
-
     acceptSubscriptionOwnerTransfer(
       _subId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -863,19 +582,13 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
     addConsumer(
       _subId: PromiseOrValue<BigNumberish>,
       _consumer: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     cancelSubscription(
       _subId: PromiseOrValue<BigNumberish>,
       _to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    consumerIsAdded(
-      _subId: PromiseOrValue<BigNumberish>,
-      _consumer: PromiseOrValue<string>,
-      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     createSubscription(
@@ -888,24 +601,11 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    fulfillRandomWordsWithOverride(
-      _requestId: PromiseOrValue<BigNumberish>,
-      _consumer: PromiseOrValue<string>,
-      _words: PromiseOrValue<BigNumberish>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     fundSubscription(
       _subId: PromiseOrValue<BigNumberish>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
-
-    getConfig(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getFallbackWeiPerUnitLink(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getFeeConfig(overrides?: CallOverrides): Promise<BigNumber>;
 
     getRequestConfig(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -914,15 +614,10 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    pendingRequestExists(
-      subId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
     removeConsumer(
       _subId: PromiseOrValue<BigNumberish>,
       _consumer: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     requestRandomWords(
@@ -946,8 +641,6 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
 
     GAS_PRICE_LINK(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    MAX_CONSUMERS(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
     acceptSubscriptionOwnerTransfer(
       _subId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -956,19 +649,13 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
     addConsumer(
       _subId: PromiseOrValue<BigNumberish>,
       _consumer: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     cancelSubscription(
       _subId: PromiseOrValue<BigNumberish>,
       _to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    consumerIsAdded(
-      _subId: PromiseOrValue<BigNumberish>,
-      _consumer: PromiseOrValue<string>,
-      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     createSubscription(
@@ -981,26 +668,11 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    fulfillRandomWordsWithOverride(
-      _requestId: PromiseOrValue<BigNumberish>,
-      _consumer: PromiseOrValue<string>,
-      _words: PromiseOrValue<BigNumberish>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     fundSubscription(
       _subId: PromiseOrValue<BigNumberish>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
-
-    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    getFallbackWeiPerUnitLink(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    getFeeConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getRequestConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -1009,15 +681,10 @@ export interface VRFCoordinatorV2Mock extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    pendingRequestExists(
-      subId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
     removeConsumer(
       _subId: PromiseOrValue<BigNumberish>,
       _consumer: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     requestRandomWords(

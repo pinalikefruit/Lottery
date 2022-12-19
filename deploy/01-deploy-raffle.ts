@@ -10,7 +10,7 @@ const deployRaffle: DeployFunction = async function(
 ) {
     const { deployments, getNamedAccounts, network, ethers } = hre
     const { deploy, log } = deployments
-    const { deployer } = await getNamedAccounts()
+    const { deployer, player } = await getNamedAccounts()
     const chainId = 31337
     let vrfCoordinatorV2Address: string | undefined, subscriptionId: string | undefined
     
